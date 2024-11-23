@@ -1,0 +1,26 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Counter
+    network: mainnet
+    source:
+      address: "0xD1ea1592b7927a2f0EE5f8567928Df0cfA687C78"
+      abi: Counter
+      startBlock: 43740
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ValueUpdated
+      abis:
+        - name: Counter
+          file: ./abis/Counter.json
+      eventHandlers:
+        - event: ValueUpdated(indexed address,uint256,uint256)
+          handler: handleValueUpdated
+      file: ./src/counter.ts

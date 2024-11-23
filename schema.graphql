@@ -1,0 +1,9 @@
+type ValueUpdated @entity(immutable: true) {
+  id: Bytes!
+  updater: Bytes! # address
+  oldValue: BigInt! # uint256
+  newValue: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
